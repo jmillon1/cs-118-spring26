@@ -14,7 +14,7 @@ pushed commit from your forked repository.
 Change your working directory and open the file named 'binary.txt' in your preffered text editor.
 
 The binary.txt file contains a message written in binary. Use your binary conversion skills to decode the 
-message and fix the mistakes. Then convert it back to binary.
+message and fix the mistakes. Then convert the corrected message back to binary.
 
 After you have made the appropriate changes save and close the document. Then using the terminal enter the 
 commands to commit and push the changes to Git. Don't forget to leave a meaning full message with your 
