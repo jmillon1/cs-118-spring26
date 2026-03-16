@@ -1,0 +1,62 @@
+Instructions to install Git:
+1.  Check if Git is already installed on your device.
+    Type this command in your terminal: " git --version "
+    - If you see a version number then Git is already installed.
+    - If you receive an error message saying the command is not recognized move to step 2.
+
+2.  Update app install repository:
+    Linux (Ubuntu/Debian) OS:
+    - Run command: " sudo apt update "
+        - This will update the apt repository
+    - Run command: " sudo apt install git "
+        - This will install Git from the apt repository
+    - Confirm the installation by checking its version
+        - If you get an error check your internet connection and repeat step 2.
+
+3.  Configure Git:
+    - Setting your displayed name:
+        - Run command: " git config --global user.name 'Your Name' "
+            - Make sure to replace 'Your Name' with your desired display name
+    - Setting your displayed email address:
+        - Run command: " git config --global user.email 'your.email@someemail.com' "
+            - Make sure to replace 'your.email@someemail.com'
+    - Setting the default branch to main:
+        - Run command: " git config --global init.defaultBranch main
+    - Verify your configurations:
+        - Run command: " git config --list "
+            - If you do not see your name, email or the wrong branch is displayed repeat step 3
+            - If you need to make corrections repeat the appropriate command in step 3
+
+4.  Generate an SSH Key on Your System:
+    - Run command: " ssh-keygen -t rsa -b 4096 -C 'your.email@someemail.com' "
+        - make sure the email matches what was set up in your git config
+    - You will then be prompted to save the key
+        - Leave this blank and press Enter on your keyboad to save your key to the default location (~/.ssh/id_rsa)
+        - Enter your desired directory and key name to save it to another location with a desired name
+    - Next it will prompt you to set a Passphrase
+        - This is optional. Leave this blank and press Enter on your keyboard if you DO NOT want to set a Passphrase
+    - Verify key generation
+        - Run command: " ls -a ~/.ssh "
+            - If saved in the default location you should see the generated private and public (.pub) key
+                ----- DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE OR ANYWHERE!!!!!! -----
+            - If you saved it in a custom directory run " ls -a 'that_directory' "
+
+5.  Giving Your Public Key to GitHub (PUBLIC KEY!!!!!)
+    - Run command: " cat ~/.ssh/'keyName'.pub "
+        - Make sure to replace 'keyName' with the name of your PUBLIC (.pub) key
+        - Copy and paste the concatinated messege from the terminal (ctrl+shift+v)
+    - Open a web browser and navigate to https://github.com
+        - Log in to or create an account using the email from step 3.
+        - Go to your account settings and navigate to the SSH and GPG key page
+            - https://github.com/settings/keys
+    - Locate and click the "New SSH Key" button
+        - In the box labled "Title" name your key
+            - Tip: give it a descriptive name of what the key is for
+        - Paste the PUBLIC (.pub) key copied from above
+        - Click "Add SSH Key"
+    - Test the key to make sure it works
+        - In the terminal: Run command " ssh -T git@github.com "
+        - If successfull you will recieve a message saying :
+            - "Hi 'User'! You've successfully authenticated, but Github does not provide shell access."
+        - If unsuccessfull repeat step 5 and check if they generated key matches what was pasted into Github
+
